@@ -20,7 +20,7 @@ class LampPost(Resource):
         args = request.args
 
         if("q" in args):                #   query (example: http://127.0.0.1:5000/lp?q=BE1240)
-            return {'data': data.loc[args["q"]].to_dict()}, 200     
+            return data.loc[args["q"]].to_dict(), 200     
 
         elif("update" in args):
             if (time.time() - os.path.getmtime('lamppost_en.csv') > (1 * 30 * 24 * 60 * 60)):   #   older than  3 months - (3 * 30 * 24 * 60 * 60) seconds
