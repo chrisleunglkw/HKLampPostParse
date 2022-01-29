@@ -41,7 +41,7 @@ def updateCSV():
 #   === CSV File updates
 
 
-api.add_resource(LampPost, '/lp')  # add endpoints
+api.add_resource(LampPost, '/')  # add endpoints
 if __name__ == '__main__':
     app.run()  # run our Flask app
     
