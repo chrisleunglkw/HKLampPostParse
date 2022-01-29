@@ -15,9 +15,9 @@
 ---
 **Get Information by Lamp Post ID**
 
-`lp?q=[LampPost ID]`
+`/?q=[LampPost ID]`
 
 **Update CSV**
 
-`/lp?update`
+`/?update`
 It updates the csv file locally only if the file is older than 1 month. 
