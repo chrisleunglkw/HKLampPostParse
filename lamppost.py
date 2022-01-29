@@ -18,12 +18,19 @@ class LampPost(Resource):
     def get(self):      
         data = pd.read_csv('lamppost_en.csv', index_col=0, header=0)  # read local CSV
         args = request.args
-
-        if("q" in args):                #   query (example: http://127.0.0.1:5000/lp?q=BE1240)
-            return data.loc[args["q"]].to_dict(), 200     
+        #   query (example: http://127.0.0.1:5000/lp?q=BE1240)
+        if("q" in args):    
+            try:
+                #    Lamp post ID appears in capital letters only and no space
+                return data.loc[args["q"].upper().replace(" ", "")].to_dict(), 200  
+            except KeyError as err:
+                return {'KeyError': str(err)},200
+            else:
+                return 200
 
         elif("update" in args):
-            if (time.time() - os.path.getmtime('lamppost_en.csv') > (1 * 30 * 24 * 60 * 60)):   #   older than  3 months - (3 * 30 * 24 * 60 * 60) seconds
+            #   older than  3 months - (3 * 30 * 24 * 60 * 60) seconds
+            if (time.time() - os.path.getmtime('lamppost_en.csv') > (1 * 30 * 24 * 60 * 60)):
                 print("File older than 1 month, updating...")
                 updateCSV()
             else:
@@ -34,10 +41,14 @@ class LampPost(Resource):
 
 #   === CSV File updates
 def updateCSV():
-    url = "http://218.253.203.24/datagovhk/plis/lamppost_en.csv"    #   From https://data.gov.hk/en-data/dataset/hk-hyd-plis-lamppostdata
-    lamppostFile = requests.get(url, allow_redirects=True)
-    open('lamppost_en.csv', 'wb').write(lamppostFile.content)
-    print("Downloaded")
+    #   From https://data.gov.hk/en-data/dataset/hk-hyd-plis-
+    try:
+        url = "http://218.253.203.24/datagovhk/plis/lamppost_en.csv"
+        lamppostFile = requests.get(url, allow_redirects=True)
+        open('lamppost_en.csv', 'wb').write(lamppostFile.content)
+        print("Downloaded")
+    except:
+        print("Download error")
 #   === CSV File updates
 
 
