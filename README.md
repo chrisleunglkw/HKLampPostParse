@@ -5,6 +5,8 @@
 
 (Street icons created by Freepik)
 
+I have hosted the API  [Here](https://lamppost.chriz.tk "Here")
+
 ### Features
 ---
 - This is a simple Python Flask API application to parse Hong Kong Lamp Post ID and returning GPS coordinates for further usage
