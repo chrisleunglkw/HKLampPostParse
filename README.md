@@ -1,9 +1,9 @@
+
 # HKLampPostParse
 
 ![](https://cdn-icons-png.flaticon.com/128/89/89069.png)
-(Street icons created by Freepik)
 
-[TOCM]
+(Street icons created by Freepik)
 
 ### Features
 ---
@@ -13,9 +13,11 @@
 
 ### API Usage
 ---
-####**Get Information by Lamp Post ID**
+**Get Information by Lamp Post ID**
+
 `lp?q=[LampPost ID]`
 
-####**Update CSV**
+**Update CSV**
+
 `/lp?update`
 It updates the csv file locally only if the file is older than 1 month. 
