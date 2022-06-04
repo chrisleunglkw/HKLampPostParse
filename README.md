@@ -5,7 +5,7 @@
 
 (Street icons created by Freepik)
 
-I have hosted the API  [Here](https://lamppost.chriz.tk "Here")
+I have hosted the API  [Here](https://lamppost.chriz.me "Here")
 
 ### Features
 ---
